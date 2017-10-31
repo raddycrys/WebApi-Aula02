@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 
-namespace Aula02
+namespace Aula02.Controller
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [RoutePrefix("api/palindromo")]
     public class PalindromoController : ApiController
     {
         /// <summary>
-        /// teste do controler do rodrigão
+        /// Controller que verifica se a palavra passada é Palindromo
         /// </summary>
         /// <param name="texto"></param>
         /// <returns></returns>
@@ -21,7 +24,7 @@ namespace Aula02
         }
 
         /// <summary>
-        /// teste
+        /// Controller que verifica da lista de palavras passadas quais são palindromas e retorna uma lista somente com as palindromas
         /// </summary>
         /// <param name="listaTexto"></param>
         /// <returns></returns>

@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace Aula02
+namespace Aula02.Service
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class PalindromoService
     {
         /// <summary>
-        /// teste do rodrigão
+        /// 
         /// </summary>
         /// <param name="texto"></param>
         /// <returns></returns>
@@ -17,6 +17,11 @@ namespace Aula02
             return texto == texto.Reverter();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="listaTexto"></param>
+        /// <returns></returns>
         public List<string> ListarPalindromo(List<string> listaTexto)
         {
             var retorno = new List<string>();

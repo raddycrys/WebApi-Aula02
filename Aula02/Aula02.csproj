@@ -108,8 +108,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="PalindromoController.cs" />
-    <Compile Include="PalindromoService.cs" />
+    <Compile Include="Controller\PalindromoController.cs" />
+    <Compile Include="Service\PalindromoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
