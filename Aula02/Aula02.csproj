@@ -105,16 +105,22 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Controller\ClienteController.cs" />
+    <Compile Include="Controller\ProdutoController.cs" />
     <Compile Include="CustomExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controller\PalindromoController.cs" />
+    <Compile Include="Model\Base\BaseEntity.cs" />
     <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\Pedido.cs" />
+    <Compile Include="Model\Produto.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
+    <Compile Include="Repository\ProdutoRepository.cs" />
     <Compile Include="Service\ClienteService.cs" />
     <Compile Include="Service\PalindromoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ProdutoService.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
