@@ -18,7 +18,7 @@ namespace Aula02.Service
         public Produto GetById(int Id)
         {
             var repository = new ProdutoRepository();
-            return repository.GetByID(Id);
+            return repository.GetById(Id);
         }
 
         /// <summary>

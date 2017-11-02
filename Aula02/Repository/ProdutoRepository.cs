@@ -48,7 +48,7 @@ namespace Aula02.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Produto GetByID(int id)
+        public Produto GetById(int id)
         {
             return _listaProduto.Where(p => p.Id == id).FirstOrDefault();
         }
@@ -68,7 +68,7 @@ namespace Aula02.Repository
         /// <param name="id"></param>
         public void Delete(int id)
         {
-            var produtoAux = GetByID(id);
+            var produtoAux = GetById(id);
 
             if (produtoAux != null)
                 _listaProduto.Remove(produtoAux);
@@ -80,7 +80,7 @@ namespace Aula02.Repository
         /// <param name="produto"></param>
         public void Update(Produto produto)
         {
-            var produtoAux = GetByID(produto.Id);
+            var produtoAux = GetById(produto.Id);
 
             if (produtoAux != null)
             {

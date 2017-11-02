@@ -49,7 +49,7 @@ namespace Aula02.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Cliente GetByID(int id)
+        public Cliente GetById(int id)
         {
             return _listaCliente.Where(p => p.Id == id).FirstOrDefault();
         }
@@ -69,7 +69,7 @@ namespace Aula02.Repository
         /// <param name="id"></param>
         public void Delete(int id)
         {
-            var clienteAux = GetByID(id);
+            var clienteAux = GetById(id);
 
             if (clienteAux != null)
                 _listaCliente.Remove(clienteAux);
@@ -81,7 +81,7 @@ namespace Aula02.Repository
         /// <param name="cliente"></param>
         public void Update(Cliente cliente)
         {
-            var clienteAux = GetByID(cliente.Id);
+            var clienteAux = GetById(cliente.Id);
 
             if (clienteAux != null)
             {
@@ -98,7 +98,7 @@ namespace Aula02.Repository
         /// <param name="ativar"></param>
         public void AtivaOrInativa(int id, bool ativar)
         {
-            var clienteAux = GetByID(id);
+            var clienteAux = GetById(id);
 
             if (clienteAux != null)
                 clienteAux.Ativo = ativar;
