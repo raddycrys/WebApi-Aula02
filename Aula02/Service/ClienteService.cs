@@ -1,24 +1,22 @@
 ﻿using Aula02.Model;
 using Aula02.Repository;
+using Aula02.Service.Base;
 using System.Collections.Generic;
 using System.Linq;
+using Aula02.Repository.Base;
 
 namespace Aula02.Service
 {
     /// <summary>
     /// Classe de Cliente responsável pelas regras de negócio
     /// </summary>
-    public class ClienteService
+    public class ClienteService : BaseService<Cliente>
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        public Cliente GetById(int Id)
+        private readonly BaseRepository<Cliente> _clienteRepository;
+
+        public ClienteService(BaseRepository<Cliente> baseRepository) : base(baseRepository)
         {
-            var repository = new ClienteRepository();
-            return repository.GetById(Id);
+            _clienteRepository = baseRepository;
         }
 
         /// <summary>
@@ -27,8 +25,7 @@ namespace Aula02.Service
         /// <returns></returns>
         public List<Cliente> GetAllOrdemAlfabetica()
         {
-            var repository = new ClienteRepository();
-            return repository.GetAll().OrderBy(p => p.Nome).ToList();
+            return _clienteRepository.GetAll().OrderBy(p => p.Nome).ToList();
         }
 
         /// <summary>
@@ -38,8 +35,7 @@ namespace Aula02.Service
         /// <returns></returns>
         public List<Cliente> GetBySexo(TipoSexo tipoSexo)
         {
-            var repository = new ClienteRepository();
-            return repository.GetAll().Where(p => p.Sexo == tipoSexo).ToList();
+            return _clienteRepository.GetAll().Where(p => p.Sexo == tipoSexo).ToList();
         }
 
         /// <summary>
@@ -48,8 +44,7 @@ namespace Aula02.Service
         /// <returns></returns>
         public List<Cliente> GetClientesAtivos()
         {
-            var repository = new ClienteRepository();
-            return repository.GetAll().Where(p => p.Ativo == true).ToList();
+            return _clienteRepository.GetAll().Where(p => p.Ativo == true).ToList();
         }
 
         /// <summary>
@@ -58,29 +53,7 @@ namespace Aula02.Service
         /// <returns></returns>
         public List<Cliente> GetAniversariantes(int dia, int mes)
         {
-            var repository = new ClienteRepository();
-
-            return repository.GetAll().Where(p => p.DataNascimento.GetValueOrDefault().Day == dia && p.DataNascimento.GetValueOrDefault().Month == mes).ToList();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cliente"></param>
-        public void Inserir(Cliente cliente)
-        {
-            var repository = new ClienteRepository();
-            repository.Insert(cliente);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cliente"></param>
-        public void Alterar(Cliente cliente)
-        {
-            var repository = new ClienteRepository();
-            repository.Update(cliente);
+            return _clienteRepository.GetAll().Where(p => p.DataNascimento.GetValueOrDefault().Day == dia && p.DataNascimento.GetValueOrDefault().Month == mes).ToList();
         }
 
         /// <summary>
@@ -92,16 +65,6 @@ namespace Aula02.Service
         {
             var repository = new ClienteRepository();
             repository.AtivaOrInativa(id, ativar);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        public void Remover(int id)
-        {
-            var repository = new ClienteRepository();
-            repository.Delete(id);
         }
     }
 }

@@ -116,9 +116,11 @@
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\Produto.cs" />
+    <Compile Include="Repository\Base\BaseRepository.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\PedidoRepository.cs" />
     <Compile Include="Repository\ProdutoRepository.cs" />
+    <Compile Include="Service\Base\BaseService.cs" />
     <Compile Include="Service\ClienteService.cs" />
     <Compile Include="Service\PalindromoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

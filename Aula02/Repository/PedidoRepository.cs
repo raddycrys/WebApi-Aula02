@@ -1,4 +1,5 @@
 ﻿using Aula02.Model;
+using Aula02.Repository.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +9,24 @@ namespace Aula02.Repository
     /// <summary>
     /// 
     /// </summary>
-    public class PedidoRepository
+    public sealed class PedidoRepository : BaseRepository<Pedido>
     {
-        /// <summary>
-        /// Lista que será usada como nosso banco de dados
-        /// </summary>
-        private static List<Pedido> _listaPedido;
-
-        /// <summary>
-        /// Método construtor que irá popular a lista quando instanciado
-        /// </summary>
-        public PedidoRepository()
-        {
-            PopularLista();
-        }
-
         /// <summary>
         /// Método responsável por popular a lista 
         /// </summary>
         /// <returns></returns>
-        private List<Pedido> PopularLista()
+        protected override List<Pedido> PopularLista()
         {
-            if (_listaPedido == null)
-            {
-                _listaPedido = new List<Pedido>();
+            _lista = new List<Pedido>();
 
-                var clienteRepository = new ClienteRepository();
-                var produtoRepository = new ProdutoRepository();
+            var clienteRepository = new ClienteRepository();
+            var produtoRepository = new ProdutoRepository();
 
-                CriarPrimeiroPedido(clienteRepository, produtoRepository);
+            CriarPrimeiroPedido(clienteRepository, produtoRepository);
 
-                CriarSegundoPedido(clienteRepository, produtoRepository);
-            }
+            CriarSegundoPedido(clienteRepository, produtoRepository);
 
-            return _listaPedido;
+            return _lista;
         }
 
         private static void CriarPrimeiroPedido(ClienteRepository clienteRepository, ProdutoRepository produtoRepository)
@@ -71,7 +56,7 @@ namespace Aula02.Repository
             pedido.Itens.Add(item);
 
             // - Coloca o pedido na lista
-            _listaPedido.Add(pedido);
+            _lista.Add(pedido);
         }
 
         private static void CriarSegundoPedido(ClienteRepository clienteRepository, ProdutoRepository produtoRepository)
@@ -101,63 +86,7 @@ namespace Aula02.Repository
             pedido.Itens.Add(item);
 
             // - Coloca o pedido na lista
-            _listaPedido.Add(pedido);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public Pedido GetById(int id)
-        {
-            return _listaPedido.Where(p => p.Id == id).FirstOrDefault();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<Pedido> GetAll()
-        {
-            return _listaPedido;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        public void Delete(int id)
-        {
-            var pedidoAux = GetById(id);
-
-            if (pedidoAux != null)
-                _listaPedido.Remove(pedidoAux);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pedido"></param>
-        public void Update(Pedido pedido)
-        {
-            var pedidoAux = GetById(pedido.Id);
-
-            if (pedidoAux != null)
-            {
-                _listaPedido.Remove(pedidoAux);
-
-                _listaPedido.Add(pedido);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pedido"></param>
-        public void Insert(Pedido pedido)
-        {
-            _listaPedido.Add(pedido);
+            _lista.Add(pedido);
         }
     }
 }

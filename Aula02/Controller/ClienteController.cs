@@ -1,5 +1,6 @@
 ﻿using Aula02.Model;
 using Aula02.Service;
+using Aula02.Service.Base;
 using System.Collections.Generic;
 using System.Web.Http;
 
